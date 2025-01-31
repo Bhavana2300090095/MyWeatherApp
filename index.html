@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Carousel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fce8f4; /* Soft pastel background */
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff8ab0;
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.3em;
+            color: #ff5f69;
+            margin-bottom: 30px;
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            display: block;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #ff5f69;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            font-weight: 600;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation Arrows */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #ff8ab0;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: #ff4e5f;
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* Button Styles */
+        .weather-btn {
+            background-color: #ff8ab0;
+            color: white;
+            font-size: 1.4em;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .weather-btn:hover {
+            background-color: #ff4e5f;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Weather Carousel</h1>
+    
+
+    <!-- Carousel Container -->
+    <div class="carousel-container">
+        <div class="carousel-slides">
+            <div class="carousel-slide">
+                <img src="https://i.pinimg.com/474x/a3/20/80/a3208073a349b6b7ac8005c93a539175.jpg" alt="Sunny Day">
+                <div class="carousel-caption">Sunny and Bright! ☀️</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://i.pinimg.com/474x/1d/f2/48/1df24840980480491264dd1f638ca503.jpg" alt="Stormy Clouds">
+                <div class="carousel-caption">Watch out for the storm! ⚡</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="https://i.pinimg.com/474x/e8/e0/12/e8e012077d006b4847854fadea92d8c3.jpg" alt="Rainy Weather">
+                <div class="carousel-caption">Raindrops are falling! 🌧️</div>
+            </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <div class="prev" onclick="moveSlide(-1)">&#10094;</div>
+        <div class="next" onclick="moveSlide(1)">&#10095;</div>
+    </div>
+<br></br>
+    <a href="weather.html" class="weather-btn">Check Weather Now</a>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll(".carousel-slide");
+        const totalSlides = slides.length;
+
+        function moveSlide(step) {
+            currentIndex += step;
+            if (currentIndex >= totalSlides) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = totalSlides - 1;
+            document.querySelector(".carousel-slides").style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // Auto Slide every 4 seconds
+        setInterval(() => moveSlide(1), 4000);
+    </script>
+
+</body>
+</html>
