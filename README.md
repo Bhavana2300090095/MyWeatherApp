@@ -42,7 +42,7 @@ Once you have your API key, replace the placeholder in the JavaScript file with 
 
 ## Demo
 
-[Link to live demo](https://your-live-demo-link.com) *(If hosted, replace with the actual demo link)*
+[Link to live demo](http://myweatherappbhavana.netlify.app/) *(If hosted, replace with the actual demo link)*
 
 ## Contributing
 
